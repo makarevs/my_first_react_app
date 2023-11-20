@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
-function TimeComponent() {
+function TimeComponent({ delay = 0, every = 2000 }) {
     const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentTime(new Date());
-        }, 1000);
+        const startTimer = () => {
+            return setInterval(() => {
+                setCurrentTime(new Date());
+            }, every);
+        }
+
+        const timerId = setTimeout(startTimer, delay);
         
-        // cleanup function
+        //cleanup function
         return () => {
-            clearInterval(timer);
+            clearTimeout(timerId);
         };
-    }, []);
-    
+    }, [delay, every]);   // adding every to the dependency array
+   
     return (
-        <p> Right now it is {currentTime.toLocaleTimeString()} </p>
+        <p>Right now it is {currentTime.toLocaleTimeString()}</p>
     );
 }
 

@@ -18,9 +18,10 @@ function App() {
         >
           Learn React
         </a>
+
         <TimeComponent />
-        <p> Right now it is {} </p>
-        <TimeComponent />
+        <TimeComponent delay={500} every={2000} />
+
       </header>
     </div>
   );
