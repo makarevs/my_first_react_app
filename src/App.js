@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import TimeComponent from './components/TimeComponent';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         >
           Learn React
         </a>
-        <p> {2 + 2} </p>
+        <TimeComponent />
+        <p> Right now it is {} </p>
+        <TimeComponent />
       </header>
     </div>
   );
